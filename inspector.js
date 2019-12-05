@@ -181,7 +181,7 @@ function showPosition(position) {
     var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
         +latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyAk3KkUmnn9APnwR_maGHD5xds0qkT-KUg";
 
-    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+    document.getElementById("mapholder").innerHTML = "<img src='map.jpg'>";
 }
 
 // function init() {
