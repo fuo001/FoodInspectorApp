@@ -25,7 +25,6 @@ function loadData() {
 
 function allData(){
     tableSize = 5;
-    // fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json")
     fetch('/api')
         .then(res => res.json())
         .then(res => {
@@ -77,7 +76,6 @@ function allData(){
 
 function sortedData(radius, category){
     tableSize = 5;
-    // fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json")
     fetch('/api')
         .then(res => res.json())
         .then(res => {
@@ -129,8 +127,6 @@ function sortedData(radius, category){
 }
 
 function more(){
-    console.log(holder)
-
     newTableSize = tableSize + 5
 
     if(newTableSize > holder["data"].length){
@@ -158,6 +154,8 @@ function more(){
 }
 
 var x = document.getElementById("location");
+var lat;
+var long;
 
 function map(){
     console.log("location being acquired");
@@ -171,20 +169,19 @@ function map(){
 
 function showPosition(position) {
     x.innerHTML = "Location: " + position.coords.latitude + ", " + position.coords.longitude;
+    lat = position.coords.latitude;
+    long = position.coords.longitude;
 
-    var latlon = position.coords.latitude + "," + position.coords.longitude;
+        
+    console.log(lat, long)
 
-    var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
-        +latlon+"&zoom=14&size=400x300&sensor=false&key=AIzaSyAk3KkUmnn9APnwR_maGHD5xds0qkT-KUg";
+    var mymap = L.map('mapholder').setView([lat, long], 14);
 
-    document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
-}
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZnVvMDAxIiwiYSI6ImNrM3oxaW1qbjAzY2IzcG84bjJwNm4zOGwifQ.JpTWYlpv-vKaYI-iJbmH0A', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        accessToken: 'pk.eyJ1IjoiZnVvMDAxIiwiYSI6ImNrM3oxaW1qbjAzY2IzcG84bjJwNm4zOGwifQ.JpTWYlpv-vKaYI-iJbmH0A'
+    }).addTo(mymap);
 
-var slider = document.getElementById("myRange");
-var output = document.getElementById("value");
-output.innerHTML = slider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-  output.innerHTML = this.value;
 }
