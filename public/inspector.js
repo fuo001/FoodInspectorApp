@@ -82,7 +82,7 @@ function sortedData(radius, category){
         .then(res => res.json())
         .then(res => {
             sorted = []
-            for(i = 0; i < res.length; i++){
+            for(i = 0; i < res["data"].length; i++){
                 if(res[i].category == category){
                     sorted.push(res[i])
                 }
