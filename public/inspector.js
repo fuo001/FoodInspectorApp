@@ -130,6 +130,8 @@ function sortedData(radius, category){
 
 function more(){
     console.log(holder)
+    holder = holder["data"]
+    console.log(holder)
 
     newTableSize = tableSize + 5
 
