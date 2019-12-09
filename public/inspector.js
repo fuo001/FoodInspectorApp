@@ -31,7 +31,7 @@ function allData(){
         .then(res => {
             holder = res;
             console.log(res); // logging step to check what we got
-            return res;
+            return res["data"];
         })
         .then(res => {
 
@@ -42,11 +42,9 @@ function allData(){
             //         cate.push(res[i].category)
             //     }
             // }
-            // console.log(cate)
+            // console.log("cate")
 
             text = "<table border><tr><th>Name</th><th>Address</th><th>Category</th><th>Location</th>"
-            // text = text + "<th>adequate_hand_washing</th><th>food_contact_surfaces_and</th><th>food_from_approved_source</th>"
-            // text = text + "<th>food_protected_from</th><th>ill_workers_restricted</th><th>no_bare_hand_contact</th>"
             text = text + "<th>Proper Hand Washing</th><th>Proper Sewage Disposal</th><th>Rodent and Insects</th></tr>"
 
             for(i = 0; i<tableSize; i++){
@@ -96,8 +94,6 @@ function sortedData(radius, category){
             holder = sorted;
 
             text = "<table border><tr><th>Name</th><th>Address</th><th>Category</th><th>Location</th>"
-            // text = text + "<th>adequate_hand_washing</th><th>food_contact_surfaces_and</th><th>food_from_approved_source</th>"
-            // text = text + "<th>food_protected_from</th><th>ill_workers_restricted</th><th>no_bare_hand_contact</th>"
             text = text + "<th>Proper Hand Washing</th><th>Proper Sewage Disposal</th><th>Rodent and Insects</th></tr>"
 
             if(tableSize > sorted.length){
