@@ -130,29 +130,27 @@ function sortedData(radius, category){
 
 function more(){
     console.log(holder)
-    holder = holder["data"]
-    console.log(holder)
 
     newTableSize = tableSize + 5
 
-    if(newTableSize > holder.length){
-        newTableSize = holder.length
+    if(newTableSize > holder["data"].length){
+        newTableSize = holder["data"].length
     }
 
     for(i = tableSize; i< newTableSize; i++){
         moreTable = moreTable + "<tr><td>" 
-            + holder[i].name + "</td><td>" 
-            + holder[i].address_line_1 + "</td><td>" 
-            + holder[i].category + "</td><td>" 
-                if (holder[i].geocoded_column_1 !== undefined){
-                moreTable = moreTable + holder[i].geocoded_column_1.coordinates[1] + ", " + holder[i].geocoded_column_1.coordinates[0] + "</td><td>";
+            + holder["data"][i].name + "</td><td>" 
+            + holder["data"][i].address_line_1 + "</td><td>" 
+            + holder["data"][i].category + "</td><td>" 
+                if (holder["data"][i].geocoded_column_1 !== undefined){
+                moreTable = moreTable + holder["data"][i].geocoded_column_1.coordinates[1] + ", " + holder["data"][i].geocoded_column_1.coordinates[0] + "</td><td>";
                 }
                 else {
                 moreTable = moreTable + "N/A, N/A</td><td>";
                 }
-            moreTable = moreTable + holder[i].proper_hand_washing  + "</td><td>"
-            + holder[i].proper_sewage_disposal  + "</td><td>"
-            + holder[i].rodent_and_insects  + "</td></tr>"
+            moreTable = moreTable + holder["data"][i].proper_hand_washing  + "</td><td>"
+            + holder["data"][i].proper_sewage_disposal  + "</td><td>"
+            + holder["data"][i].rodent_and_insects  + "</td></tr>"
     }
 
     tableSize = tableSize + 5
