@@ -79,8 +79,8 @@ function allData(){
 
 function sortedData(radius, category){
     tableSize = 5;
-    fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json")
-    // fetch('/api')
+    // fetch("https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json")
+    fetch('/api')
         .then(res => res.json())
         .then(res => {
             sorted = []
@@ -183,22 +183,6 @@ function showPosition(position) {
 
     document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
 }
-
-// function init() {
-//     new google.maps.Map(document.getElementById('mapholder'), {
-//       center: { lat: 59.325, lng: 18.069 },
-//       zoom: 15
-//     });
-//   }
-
-// function map(){
-//     new google.maps.Map(document.getElementById('mapholder'), {
-//         center: { lat: 59.325, lng: 18.069 },
-//         zoom: 15
-//       });
-// }
-
-
 
 var slider = document.getElementById("myRange");
 var output = document.getElementById("value");
