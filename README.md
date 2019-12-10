@@ -17,9 +17,9 @@ We want this application to be available and accessible to as many users as poss
 
 **Link to our Heroku hosted [Food Inspector App](https://food-inspector.herokuapp.com/). Click to open.**
 
-**Need Help? Click to acess our [User Manual](https://github.com/fuo001/FoodInspectorApp/docs/user.md/).**
+**Need Help? Click to acess our [User Manual](https://github.com/fuo001/FoodInspectorApp/blob/master/docs/user.md).**
 
-**Want to see our Design Process? Click to access our [Final Report](https://github.com/fuo001/FoodInspectorApp/docs/final.md/).**
+**Want to see our Design Process? Click to access our [Final Report](https://github.com/fuo001/FoodInspectorApp/blob/master/docs/final.md/).**
 
 ### DEVELOPER's MANUAL
 
