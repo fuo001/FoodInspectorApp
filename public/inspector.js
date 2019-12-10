@@ -1,4 +1,5 @@
 var holder;
+var holderNew;
 var moreTable;
 var tableSize;
 let radiusConvert;
@@ -106,7 +107,7 @@ function sortedData(radius, category){
             return sorted
         })
         .then(sorted => {
-            // holder = sorted;
+            holderNew = sorted;
 
             text = "<table border><tr><th>Name</th><th>Address</th><th>Category</th><th>Location</th>"
             text = text + "<th>Proper Hand Washing</th><th>Proper Sewage Disposal</th><th>Rodent and Insects</th></tr>"
@@ -146,8 +147,8 @@ function sortedData(radius, category){
 function more(){
     newTableSize = tableSize + 5
 
-    if(newTableSize > holder["data"].length){
-        newTableSize = holder["data"].length
+    if(newTableSize > holderNew.length){
+        newTableSize = holderNew.length
     }
 
     for(i = tableSize; i< newTableSize; i++){
