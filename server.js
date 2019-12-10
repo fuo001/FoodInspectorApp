@@ -55,4 +55,26 @@ app.get('/api', (req, res) => {
     });
 });
 
+// app.post('/', (req, res) => {
+//   const baseURL = 'https://data.princegeorgescountymd.gov/resource/4juk-b4qs.json'
+//   fetch(baseURL)
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log(data)
+//       console.log("I wish there was a good reason for the post request")
+//       res.send({ data: data });
+//     });
+// });
+
+// app.put('/user', (req, res) => {
+//   const baseURL = 'https://data.princegeorgescountymd.gov/resource/2qma-7ez9.json'
+//   fetch(baseURL)
+//     .then(res => res.json())
+//     .then(data => {
+//       console.log(data)
+//       console.log("Another useless request")
+//       res.send({ data: data });
+//     });
+// });
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

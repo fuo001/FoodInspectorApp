@@ -79,6 +79,14 @@ function allData(){
             return text;
         })
         .then(text => document.getElementById("more").id = "show");
+       
+    // fetch('/')
+    // .then(res => res.json())
+    // .then(res => console.log(res)); 
+    
+    // fetch('/user')
+    // .then(res => res.json())
+    // .then(res => console.log(res));
 }
 
 function sortedData(radius, category){
@@ -181,7 +189,6 @@ function showPosition(position) {
     lat = position.coords.latitude;
     long = position.coords.longitude;
 
-        
     console.log(lat, long)
 
     var mymap = L.map('mapholder').setView([lat, long], 13);
