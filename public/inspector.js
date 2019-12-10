@@ -1,11 +1,18 @@
 var holder;
 var moreTable;
 var tableSize;
+let radiusConvert;
+
+var radius = document.getElementById("myRange").value;
+radiusConvert = radius * 1609.34
+
 
 function loadData() {
 
-    var radius = document.getElementById("myRange").value;
     var catChoices = document.getElementsByName("category");
+    var radius = document.getElementById("myRange").value;
+
+    // radiusConvert = radius * 1609.34
 
     for(i = 0; i < catChoices.length; i++){
         if(catChoices[i].checked){
@@ -15,7 +22,7 @@ function loadData() {
         }
     }
 
-    if((radius === "5") && (category === "all")){
+    if((radius === "3") && (category === "all")){
         allData()
     }
     else{
@@ -76,20 +83,22 @@ function allData(){
 
 function sortedData(radius, category){
     tableSize = 5;
+
     fetch('/api')
         .then(res => res.json())
         .then(res => {
             sorted = []
             for(i = 0; i < res["data"].length; i++){
-                if(res[i].category == category){
-                    sorted.push(res[i])
+                if(res["data"][i].category == category){
+                    sorted.push(res["data"][i])
                 }
             }
             console.log(sorted)
+            holder = res;
             return sorted
         })
         .then(sorted => {
-            holder = sorted;
+            // holder = sorted;
 
             text = "<table border><tr><th>Name</th><th>Address</th><th>Category</th><th>Location</th>"
             text = text + "<th>Proper Hand Washing</th><th>Proper Sewage Disposal</th><th>Rodent and Insects</th></tr>"
@@ -175,13 +184,25 @@ function showPosition(position) {
         
     console.log(lat, long)
 
-    var mymap = L.map('mapholder').setView([lat, long], 14);
+    var mymap = L.map('mapholder').setView([lat, long], 13);
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZnVvMDAxIiwiYSI6ImNrM3oxaW1qbjAzY2IzcG84bjJwNm4zOGwifQ.JpTWYlpv-vKaYI-iJbmH0A', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox/streets-v11',
         accessToken: 'pk.eyJ1IjoiZnVvMDAxIiwiYSI6ImNrM3oxaW1qbjAzY2IzcG84bjJwNm4zOGwifQ.JpTWYlpv-vKaYI-iJbmH0A'
+    }).addTo(mymap);
+
+    console.log(radiusConvert)
+
+    var marker = L.marker([lat, long]).addTo(mymap);
+    marker.bindPopup("<b>You</b>").openPopup();
+
+    var circle = L.circle([lat, long], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: radiusConvert
     }).addTo(mymap);
 
 }
